@@ -2,22 +2,39 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 
 function App() {
-  const [currentTime, setCurrentTime] = useState([{}]);
+  const [customText, setCustomText] = useState([]);
+  const [info, setInfo] = useState([]);
+
+  // useEffect(() => {
+  //   fetch('/info').then(
+  //     res => res.json()).then(
+  //       data => {
+  //         console.log(" Info ")
+  //         setInfo(data.infos);
+  //       }
+  //     );
+  // }, [])
 
   useEffect(() => {
-    fetch('/time').then(
+    fetch('/text').then(
       res => res.json()).then(
         data => {
-          setCurrentTime(data.time);
+          console.log(" HEYAH ")
+          setCustomText(data.text);
+          console.log(customText)
         }
       );
   }, [])
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Current time is {currentTime}</p>
-      </header>
+      {/* <header className="App-header"> */}
+        Checkouts
+        {customText.map((item, i) => (
+          <p key={i}>{item} </p>
+        ))}
+        
+      {/* </header> */}
     </div>
   );
 }
