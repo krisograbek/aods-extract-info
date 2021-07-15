@@ -1,10 +1,9 @@
 import datetime as dt
 from flask import Flask
 from extract_text import (
-    get_info, 
-    get_sentences,
-    get_transcripts
+    get_sentences
 )
+from helpers import get_transcripts
 
 app = Flask(__name__)
 
@@ -17,7 +16,6 @@ def get_extracted_sentences():
     infos = list()
     for script in scripts:
         # before = dt.datetime.now()
-        # print("len lines:", len(script["text"]))
         idx = 0
         sents = list()
         while idx < len(script["text"]):
@@ -30,9 +28,3 @@ def get_extracted_sentences():
         infos.append(info)
         # print(dt.datetime.now() - before)
     return {'text': infos}
-
-@app.route('/info')
-def get_text_info():
-    infos = get_info()
-    print(infos)
-    return {'infos': infos}

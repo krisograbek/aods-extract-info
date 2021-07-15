@@ -3,17 +3,6 @@ import './App.css';
 
 function App() {
   const [customText, setCustomText] = useState([]);
-  const [info, setInfo] = useState([]);
-
-  // useEffect(() => {
-  //   fetch('/info').then(
-  //     res => res.json()).then(
-  //       data => {
-  //         console.log(" Info ")
-  //         setInfo(data.infos);
-  //       }
-  //     );
-  // }, [])
 
   useEffect(() => {
     fetch('/text').then(
@@ -28,10 +17,9 @@ function App() {
 
   return (
     <div className="App">
-      {/* <header className="App-header"> */}
         Books, Podcasts, ...
         {customText.map((item, i) => (
-          <div key={i}>
+          <div className="Episode" key={i}>
           <p>Episode: {item.title} </p>
           <ol>
           {item.sents.map((sent, idx) => (
