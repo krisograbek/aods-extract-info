@@ -29,9 +29,16 @@ function App() {
   return (
     <div className="App">
       {/* <header className="App-header"> */}
-        Checkouts
+        Books, Podcasts, ...
         {customText.map((item, i) => (
-          <p key={i}>{item} </p>
+          <div key={i}>
+          <p>Episode: {item.title} </p>
+          <ol>
+          {item.sents.map((sent, idx) => (
+            <li key={idx}>{sent}</li>
+          ))}
+          </ol>
+          </div>
         ))}
         
       {/* </header> */}
