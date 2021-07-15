@@ -33,11 +33,11 @@ function App() {
         {customText.map((item, i) => (
           <div key={i}>
           <p>Episode: {item.title} </p>
-          <ol>
+          {/* <div> */}
           {item.sents.map((sent, idx) => (
-            <li key={idx}>{sent}</li>
+            <div key={idx}>{sent}</div>
           ))}
-          </ol>
+          {/* </div> */}
           </div>
         ))}
         

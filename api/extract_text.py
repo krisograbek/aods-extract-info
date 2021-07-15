@@ -1,69 +1,15 @@
-import os
-import re
 import spacy
 from spacy.matcher import Matcher
+from helpers import get_lines
+
 
 nlp = spacy.load('en_core_web_sm')
 
-
-TRANS_DIR = '../data/transcripts/'
-
-def remove_stopwords(tokens):
-    return [word for word in tokens if word not in stopwords]
-
-def remove_punctuations(tokens):
-    return [word for word in tokens if word not in string.punctuation]
-
-def clean_tokens(tokens):
-    tokens = remove_stopwords(tokens)
-    tokens = remove_punctuations(tokens)
-    return tokens
-
-def remove_timestamps(lines):
-    """
-    removes beginnings, e.g. Speaker4: [00:45:09] 
-    or just timestamps, e.g. [00:49:54]
-    """
-    clean = list()
-
-    for line in lines:
-        if line == "\n":
-            continue
-        if line.startswith(r'Speaker'):
-            line = re.sub(r'Speaker\d:', "", line)
-        line = re.sub(r'\[\d\d:\d\d:\d\d\]', "", line)
-        clean.append(line)
-    return clean
-
-def get_lines(fpath):
-    with open(fpath) as f:
-        txt = f.readlines()
-    
-    return txt
-
-def get_transcripts():
-    scripts = list()
-    for script in os.listdir(TRANS_DIR):
-        with open(os.path.join(TRANS_DIR, script)) as f:
-            txt = f.readlines()
-            # remove garbage
-            txt = remove_timestamps(txt)
-            scripts.append({
-                "title": script,
-                "text": txt
-            })
-    return scripts
-
-def get_first_n_docs(n: int):
-    lines = get_lines('../data/transcripts.txt')
-    return lines[:n]
 
 def get_info():
     lines = get_lines('../data/transcripts.txt')
     txt = " ".join(lines)
     doc = nlp(txt[:100])
-
-    # print(list(doc)[:5])
 
     infos = list()
     for token in doc:
