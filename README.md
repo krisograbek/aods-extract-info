@@ -30,10 +30,9 @@ $ venv\Scripts\activate
 (venv) $ npm run start-api
 ```
 
+## Run Frontend
 
-## Available Frontend Scripts
-
-In the project directory, you can run:
+### Open a second terminal in the project directory
 
 ### `npm run install`
 
@@ -46,6 +45,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+## Other Frontend Scripts
 
 ### `npm test`
 
