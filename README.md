@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+## Create directory for text files
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+`$ mkdir -p data/transcripts`
+
+Then, add text files into this directory
 
 ## Preparing a Flask API Backend
 
