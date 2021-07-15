@@ -1,8 +1,4 @@
-## Create directory for text files
-
-`$ mkdir -p data/transcripts`
-
-Then, add text files into this directory
+#### First, copy text files to `/data/transcripts/`
 
 ## Preparing a Flask API Backend
 
