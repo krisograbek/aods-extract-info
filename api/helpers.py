@@ -5,17 +5,6 @@ import string
 TRANS_DIR = '../data/transcripts/'
 
 
-def remove_stopwords(tokens):
-    return [word for word in tokens if word not in stopwords]
-
-def remove_punctuations(tokens):
-    return [word for word in tokens if word not in string.punctuation]
-
-def clean_tokens(tokens):
-    tokens = remove_stopwords(tokens)
-    tokens = remove_punctuations(tokens)
-    return tokens
-
 def remove_timestamps(lines):
     """
     removes beginnings, e.g. Speaker4: [00:45:09] 
@@ -33,12 +22,13 @@ def remove_timestamps(lines):
     return clean
 
 
-def get_lines(fpath):
-    with open(fpath) as f:
-        txt = f.readlines()
-    return txt
-
 def get_transcripts():
+    """
+    Returns
+    -------
+    scripts : list(title: str, text: str)
+        a list dictionaries containing the filename and it's content
+    """
     scripts = list()
     for script in os.listdir(TRANS_DIR):
         with open(os.path.join(TRANS_DIR, script)) as f:
@@ -50,3 +40,16 @@ def get_transcripts():
                 "text": txt
             })
     return scripts
+
+############## For Future Use  #################
+
+# def remove_stopwords(tokens):
+#     return [word for word in tokens if word not in stopwords]
+
+# def remove_punctuations(tokens):
+#     return [word for word in tokens if word not in string.punctuation]
+
+# def clean_tokens(tokens):
+#     tokens = remove_stopwords(tokens)
+#     tokens = remove_punctuations(tokens)
+#     return tokens

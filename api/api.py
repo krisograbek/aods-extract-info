@@ -1,7 +1,6 @@
 import datetime as dt
 from flask import Flask
 from extract_text import (
-    get_info, 
     get_sentences
 )
 from helpers import get_transcripts
@@ -29,8 +28,3 @@ def get_extracted_sentences():
         infos.append(info)
         # print(dt.datetime.now() - before)
     return {'text': infos}
-
-@app.route('/info')
-def get_text_info():
-    infos = get_info()
-    return {'infos': infos}
