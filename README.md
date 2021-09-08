@@ -36,7 +36,7 @@ $ venv\Scripts\activate
 
 ### Open a second terminal in the project directory
 
-### `npm run install`
+### `npm install`
 
 Installs packages from `package.json`
 
